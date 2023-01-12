@@ -67,3 +67,11 @@ etiqueta.
 ![Alt text](https://raw.githubusercontent.com/ricardoolivaresventura/Actividad-24-cc3s2/main/get-pods.PNG "")
 
 ### Implementación de un servicio de Kubernetes
+- Cada Pod tiene una dirección IP en la red interna de Kubernetes, lo que significa que ya puede acceder a cada instancia de calculador desde otro Pod que se ejecuta en el mismo clúster de Kubernetes. ¿Pero si deseamos acceder a la aplicación desde el exterior? Para ello, necesitaríamos los Services de Kubernetes
+- Para crear un servicio tenemos que hacerlo desde un archivo de configuración YAML, lo llamaremos services.yaml
+![Alt text](https://raw.githubusercontent.com/ricardoolivaresventura/Actividad-24-cc3s2/main/serviceYAML.PNG "")
+- Luego, instalamos el servicio con el siguiente comando:
+![Alt text](https://raw.githubusercontent.com/ricardoolivaresventura/Actividad-24-cc3s2/main/install-service.PNG "")
+- Luego, podemos verificar que el servicio se implementa correctamente ejecutando el siguiente comando:
+![Alt text](https://raw.githubusercontent.com/ricardoolivaresventura/Actividad-24-cc3s2/main/get-service.PNG "")
+
