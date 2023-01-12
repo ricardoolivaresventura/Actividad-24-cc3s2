@@ -74,4 +74,23 @@ etiqueta.
 ![Alt text](https://raw.githubusercontent.com/ricardoolivaresventura/Actividad-24-cc3s2/main/install-service.PNG "")
 - Luego, podemos verificar que el servicio se implementa correctamente ejecutando el siguiente comando:
 ![Alt text](https://raw.githubusercontent.com/ricardoolivaresventura/Actividad-24-cc3s2/main/get-service.PNG "")
+- Para verificar que el servicio apunte a las tres réplicas de Pod que creamos en la sección anterior, ejecute
+el siguiente comando:
+![Alt text](https://raw.githubusercontent.com/ricardoolivaresventura/Actividad-24-cc3s2/main/grep-eps.PNG "")
 
+### Exponiendo una aplicación
+Para comprender cómo se puede acceder a tu aplicación desde el exterior, debemos comenzar con los tipos de servicios de Kubernetes. Puedes utilizar 4 tipos de servicios diferentes, de la siguiente manera:
+- ClusterIP (predeterminado)
+- NodePort: expone el servicio en el mismo puerto de cada nodo del clúster. En otras palabras, cada máquina física (que es un nodo de Kubernetes) abre un puerto que se reenvía al servicio.
+- LoadBalancer: crea un balanceador de carga externo y asigna una IP externa separada para el servicio. Su clúster de Kubernetes debe admitir balanceadores de carga externos, lo que funciona bien en el caso de las plataformas en la nube, pero es posible que no funcione si usas minikube.
+- ExternalName: Expone el servicio usando un nombre DNS (especificado por externalName en la especificación).
+ 
+### Ahora, veamos cómo podemos acceder al servicio
+- Podemos repedir el mismo comando que ya ejecutamos
+![Alt text](https://raw.githubusercontent.com/ricardoolivaresventura/Actividad-24-cc3s2/main/get-service.PNG "")
+En la cual podemos ver que seleccionó el puerto 31549 como puerto de nodo. Esto quiere decir que podemos acceder a nustro servicio de Calculador usando este puero y la IP de cualquiera de los nodos de Kubernetes
+- En mi caso, he utilizado Docker Desktop, por lo tanto, el IP de nodo es localhost
+- Para verificar que podemos acceder a Calculador desde el exterior, ejecuta el sgte comando:
+![Alt text](https://raw.githubusercontent.com/ricardoolivaresventura/Actividad-24-cc3s2/main/curl-kubernetes.PNG "")
+- Hicimos una solicitud HTTP a una de nuestras instancias de contenedor de Calculador y devolvió la
+respuesta correcta, lo que significa que implementamos con éxito la aplicación en Kubernetes.
